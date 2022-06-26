@@ -66,7 +66,7 @@ then
   echo "{" >> "$PWD/$1/src/$1.cpp"
   echo "  if (argc != 2)" >> "$PWD/$1/src/$1.cpp"
   echo "  {" >> "$PWD/$1/src/$1.cpp"
-  echo "    const char *msg[4] =" >> "$PWD/$1/src/$1.cpp"
+  echo "    const char *msg[2] =" >> "$PWD/$1/src/$1.cpp"
   echo "    {" >> "$PWD/$1/src/$1.cpp"
   echo "      \"Usage: ./$1 [argument]\"," >> "$PWD/$1/src/$1.cpp"
   echo "      \"  argument: (type) Description.\"" >> "$PWD/$1/src/$1.cpp"
