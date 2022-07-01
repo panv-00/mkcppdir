@@ -42,7 +42,7 @@ then
   echo "#ifndef $tu_h" >> "$PWD/$1/src/$1_functions.h"
   echo "#define $tu_h" >> "$PWD/$1/src/$1_functions.h"
   echo "" >> "$PWD/$1/src/$1_functions.h"
-  echo "#endif" >> "$PWD/$1/src/$1_functions.h"
+  echo "#endif /* $tu_h */" >> "$PWD/$1/src/$1_functions.h"
 
   touch "$PWD/$1/src/$1_functions.cpp"
   echo "#include <stdio.h>" >> "$PWD/$1/src/$1_functions.cpp"
