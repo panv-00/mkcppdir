@@ -149,5 +149,5 @@ echo $'\t'$'\t'"\$(CFLAGS) \\" >> "$PWD/$main/build/Makefile"
 echo $'\t'$'\t'"\$(LIBS)" >> "$PWD/$main/build/Makefile"
 echo "" >> "$PWD/$main/build/Makefile"
 echo "%.o: %.cpp %.h \$(DEPLIST)" >> "$PWD/$main/build/Makefile"
-echo $'\t'"\$(CPP) -c \$< -o \$*.o \$(CFLAGS) \$(DEPLIST)" >> "$PWD/$main/build/Makefile"
+echo $'\t'"\$(CPP) -c \$< -o \$*.o \$(CFLAGS) \$(LIBS)" >> "$PWD/$main/build/Makefile"
 
