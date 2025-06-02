@@ -101,7 +101,7 @@ OBJ_DIR := ./objects
 BIN := ../${PROJECT_NAME}
 
 # Source and object files
-SRC_FILES := \$(shell find \$(SRC_DIR) -name '*.c')
+SRC_FILES := \$(shell find -L \$(SRC_DIR) -name '*.c')
 OBJ_FILES := \$(patsubst \$(SRC_DIR)/%.c, \$(OBJ_DIR)/%.o, \$(SRC_FILES))
 
 # Default target
