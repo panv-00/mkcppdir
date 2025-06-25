@@ -1,32 +1,50 @@
 #!/usr/bin/bash
 
+set -e
+trap 'echo "❌ An unexpected error occurred. Aborting."' ERR
+
+VERSION="0.1.0"
+AUTHOR="panv-00"
+DATE=$(date +'%Y-%m-%d')
+
 usage() {
-  echo "Usage: $0 -n project_name -m module1 module2 ..."
-  exit 1
+  cat <<EOF
+Usage: $0 project_name [module1 module2 ...]
+
+Options:
+  --help       Show this help message and exit
+  --version    Show version info and exit
+
+Example:
+  $0 myapp utils parser repl
+EOF
+  exit 0
 }
 
-if [[ $# -lt 4 ]]; then
+version() {
+  echo "$0 version $VERSION"
+  exit 0
+}
+
+if [[ "$1" == "--help" ]]; then
+  usage
+elif [[ "$1" == "--version" ]]; then
+  version
+fi
+
+if [[ $# -lt 1 ]]; then
   usage
 fi
 
-while getopts ":n:m:" opt; do
-  case ${opt} in
-  n)
-    PROJECT_NAME=$OPTARG
-    ;;
-  m)
-    shift $((OPTIND - 2))
-    MODULES=("${@:2}")
-    break
-    ;;
-  *)
-    usage
-    ;;
-  esac
-done
+PROJECT_NAME="$1"
+shift
+MODULES=("$@")
 
-AUTHOR="panv-00"
-DATE=$(date +'%Y-%m-%d')
+if [[ -d "$PROJECT_NAME" ]]; then
+  echo "❌ Error: Directory '$PROJECT_NAME' already exists. Aborting."
+  exit 1
+fi
+
 UPPER_PROJECT_NAME=$(echo "${PROJECT_NAME^^}" | tr '-' '_')
 
 mkdir -p "$PROJECT_NAME"/{src,build/objects}
